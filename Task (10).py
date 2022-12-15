@@ -1,0 +1,12 @@
+import pandas as pd
+from urllib.request import urlretrieve
+
+urlretrieve('https://raw.githubusercontent.com/ChornaOlga/PLfDA/main/LAB_3/countries.csv',
+            'countries.csv')
+urlretrieve('https://raw.githubusercontent.com/ChornaOlga/PLfDA/main/LAB_3/covid-countries-data.csv',
+            'covid-countries-data.csv')
+countries_df = pd.read_csv('countries.csv')
+covid_data_df = pd.read_csv('covid-countries-data.csv')
+
+total_tests_missing = covid_data_df.total_tests.isna().sum()
+print("The data for total tests is missing for {} countries.".format(int(total_tests_missing)))
